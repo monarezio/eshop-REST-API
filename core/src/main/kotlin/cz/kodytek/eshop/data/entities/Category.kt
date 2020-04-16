@@ -15,5 +15,5 @@ data class Category(
         var description: String,
         @OneToMany
         @JoinColumn(name = "category_id")
-        var products: List<Product>
+        var products: MutableList<Product>
 )

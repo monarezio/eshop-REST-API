@@ -13,7 +13,14 @@ data class Product(
         @Column(nullable = false)
         @Type(type = "text")
         var description: String,
+        @Column(nullable = false)
+        var unitsOnStock: Int,
+        @Column(nullable = false)
+        var price: Int,
         @OneToMany
         @JoinColumn(name = "product_id")
-        var images: List<Image>
+        var images: List<Image>,
+        @OneToMany
+        @JoinColumn(name = "product_id")
+        var parameters: List<ProductParameter>
 )
