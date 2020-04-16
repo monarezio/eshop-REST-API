@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="1.0">
+    <persistence-unit name="eshop" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+        <non-jta-data-source>java:/MySqlDS</non-jta-data-source>
+
+        <class>cz.kodytek.eshop.data.entities.Category</class>
+        <class>cz.kodytek.eshop.data.entities.Product</class>
+        <class>cz.kodytek.eshop.data.entities.Image</class>
+        <class>cz.kodytek.eshop.data.entities.Review</class>
+
+        <properties>
+            <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.dialect"
+                      value="org.hibernate.dialect.MySQL8Dialect"/>
+        </properties>
+    </persistence-unit>
+</persistence>
