@@ -4,7 +4,7 @@ import org.hibernate.annotations.Type
 import javax.persistence.*
 
 @Entity
-data class Review(
+class Review(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         var id: Long?,

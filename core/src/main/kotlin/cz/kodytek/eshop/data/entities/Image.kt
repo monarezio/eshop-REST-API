@@ -3,7 +3,7 @@ package cz.kodytek.eshop.data.entities
 import javax.persistence.*
 
 @Entity
-data class Image(
+class Image(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         var id: Long?,

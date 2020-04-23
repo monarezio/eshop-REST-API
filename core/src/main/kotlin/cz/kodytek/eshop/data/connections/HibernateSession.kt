@@ -3,10 +3,9 @@ package cz.kodytek.eshop.data.connections
 import org.hibernate.Session
 import org.hibernate.SessionFactory
 import org.hibernate.Transaction
-import org.hibernate.boot.MetadataSources
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder
 import javax.persistence.EntityManager
 import javax.persistence.EntityManagerFactory
+import javax.persistence.NoResultException
 import javax.persistence.Persistence
 
 object HibernateSession {
@@ -32,26 +31,7 @@ object HibernateSession {
             throw e
         }
 
-        return result!!
-    }
-
-    private fun getSessionFactory(): SessionFactory? {
-        if (sessionFactory == null) {
-
-            // configures settings from hibernate.cfg.xml
-            val registry = StandardServiceRegistryBuilder()
-                    .configure() // configures settings from hibernate.cfg.xml
-                    .build()
-            try {
-                sessionFactory = MetadataSources(registry)
-                        .buildMetadata()
-                        .buildSessionFactory()
-            } catch (e: Exception) {
-                e.printStackTrace()
-                StandardServiceRegistryBuilder.destroy(registry)
-            }
-        }
-        return sessionFactory
+        return result ?: throw NoResultException()
     }
 
     private fun getEntityManager(): EntityManager? {

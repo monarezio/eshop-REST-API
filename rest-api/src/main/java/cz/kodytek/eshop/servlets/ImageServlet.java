@@ -26,7 +26,10 @@ public class ImageServlet extends HttpServlet {
         resp.setContentType("image/jpeg");
 
         try {
-            File f = new File(req.getRequestURI().replace("/" + moduleName + "/", ""));
+            File f = new File(req
+                    .getRequestURI()
+                    .replace("/" + moduleName + "/", ""));
+
             BufferedImage bi = ImageIO.read(f);
             OutputStream os = resp.getOutputStream();
             ImageIO.write(bi, "jpg", os);

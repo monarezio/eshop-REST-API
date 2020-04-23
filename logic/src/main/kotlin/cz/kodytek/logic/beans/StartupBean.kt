@@ -1,7 +1,11 @@
 package cz.kodytek.logic.beans
 
 import cz.kodytek.logic.models.Category
+import cz.kodytek.logic.models.Image
+import cz.kodytek.logic.models.Product
 import cz.kodytek.logic.services.interfaces.ICategoryService
+import cz.kodytek.logic.services.interfaces.IProductService
+import java.io.File
 import java.io.Serializable
 import javax.annotation.PostConstruct
 import javax.ejb.Singleton
@@ -17,6 +21,9 @@ open class StartupBean : Serializable {
 
     @Inject
     private lateinit var categoryService: ICategoryService
+
+    @Inject
+    private lateinit var productService: IProductService
 
     @PostConstruct
     open fun seed() {
@@ -47,6 +54,203 @@ open class StartupBean : Serializable {
         val consoles = categoryService.create(Category("Herní konzole", """
             **Herní konzole** se za několik posledních let staly nepostradatelnou součástí všech lidí, co mají rádi zábavu a hraní her v pohodlí domova. Hraní her si můžete užívat s přáteli a rodinou nebo v soukromí. V naší nabídce vybírejte stolní herní konzole PlayStation 4, PlayStation 3, XboX One, XboX 360 nebo Nintendo.
         """.trimIndent()))
+
+        clearResourceFolder()
+        addNotebooks(notebooks)
+    }
+
+    private fun clearResourceFolder() {
+        val resources = File("resources")
+        resources.deleteRecursively()
+    }
+
+    private fun addNotebooks(category: Category) {
+        val mbpDescription = """
+                    Pro ty, kdo překonávají hranice a mění svět, byl vyroben zdaleka nejvýkonnější notebook. Nový MacBook Pro se strhujícím 16palcovým Retina displejem, superrychlým procesorem, grafikou další generace, největší kapacitou akumulátoru ze všech MacBooků, novou Magic Keyboard a ohromným úložištěm. Je to vrcholný profesionální notebook pro nejnáročnější uživatele.
+                    ###Displej
+                    Nový MacBook Pro má fantastický 16palcový Retina displej – vůbec největší Retina displej ze všech notebooků Apple. Jas 500 nitů přispívá k vynikajícímu podání světlých tónů a zářivě jasné bílé. Přesné fotografické zarovnání molekul tekutých krystalů zase umožňuje zobrazení dokonale temné černé. Široký barevný gamut DCI-P3 zaručuje nádherně realistický obraz fotek a videí. Ať už jste kdekoli, svoji práci uvidíte v nejlepším možném světle.
+                    ###Procesor
+                    16palcový MacBook Pro přichází s úplně novou úrovní výkonu v notebooku. Díky vyspělejšímu termálnímu řešení může procesor Intel Core i9 až s osmi jádry a 16 vlákny udržet větší výkon delší dobu. Přitom dosahuje až 2,1krát vyššího výkonu než čtyřjádrový MacBook Pro. Ať vrstvíte desítky stop a efektů, renderujete 3D modely, nebo kompilujete a testujete kód, půjde vám to od ruky úplně samo.
+                    ###Grafika
+                    Grafika AMD Radeon Pro řady 5000M poskytuje vůbec nejvyšší grafický výkon v MacBooku Pro. Základní model 16palcového MacBooku Pro je proti základnímu modelu předchozí generace víc než dvakrát rychlejší. Video v ultravysokém rozlišení tak přehrává naprosto hladce a renderuje výrazně rychleji. S volitelnými 8 GB videopaměti GDDR6 získáte při zpracování úloh, jako je třeba barevný grading v DaVinci Resolve, až o 80 procent vyšší výkon proti Radeonu Pro Vega 20.
+                """.trimIndent()
+
+        val mbp13Description = """
+            To nejlepší v jednom přístroji. Nádherně barevný Retina displej nabídne tak čisté barvy s úžasným kontrastem, že od něj nebudete chtít odtrhnout zrak. Rychlé nabíhání systému a okamžité reakce na každý váš povel vám pomohou dokončit práci ještě rychleji a vy si budete moci pustit film nebo zahrát náročnou 3D hru. Vše výborně uslyšíte díky špičkovým reproduktorům a stejně tak dobře budou všichni slyšet vás díky třem mikrofonům se směrovými paprsky. Abyste klávesnici využili na maximum, vyměnili vývojáři funkční tlačítka za přizpůsobivý Touch Bar. Nabíjet baterii a přesouvat soubory do jiných zařízení můžete přes všestranné porty Thunderbolt 3.
+             ###Rychlý jako blesk
+             Ať už jste počítačový expert nebo běžný uživatel, zcela jistě zaznamenáte absolutně bezchybný, rychlý a plynulý chod celého systému. I když svému MacBooku Pro dáte sebevíc zabrat, bez problému rozjede 3D grafické aplikace, náročné hry a snadno si poradí i s několika programy a aplikacemi najednou. Čtyřjádrový procesor Intel osmé generace se postará o to, aby práce byla rychle hotova a vy měli více času na zábavu.
+             ###Lepší grafika
+             Oproti předchozímu modelu si MacBook Pro polepšil i v grafice. Integrovaná grafika disponuje 128MB vestavěnou pamětí DRAM, což je dvakrát více, než kolik najdete u jeho staršího kolegy. Díky tomu jsou grafické úlohy značně urychleny a vy se tak můžete plně ponořit do práce bez jakéhokoli zdržování. 
+             ###Touch Bar
+             Místo funkčních kláves nyní najdete na horní straně klávesnice Touch Bar. Ten vám předloží přesně to, co právě potřebujete. Podle toho, co zrovna děláte, vám nabídne úpravu jasu a hlasitosti, predikci textu, výběr emotikonů nebo třeba interaktivní prvky na úpravu parametrů či prohlížení obsahu. Konečně můžete využívat celou klávesnici na sto procent. 
+        """.trimIndent()
+
+        val mbpParams = mapOf(
+                Pair("Značka", "Apple"),
+                Pair("Rozměry", "357,9 × 245,9 × 16,2"),
+                Pair("Hmotnost", "2000 g"),
+                Pair("Operační systém", "Apple macOS"),
+                Pair("Uhlopříčka displeje", "16\""),
+                Pair("Rozlišení displeje", "3072 × 1920 px"),
+                Pair("Model procesor", "Intel Core i9-9880H"),
+                Pair("Frekvence procesoru", "2300 MHz"),
+                Pair("Model grafické karty", "AMD Radeon Pro 5500M")
+        )
+
+        val mbp13Params = mapOf(
+                Pair("Značka", "Apple"),
+                Pair("Rozměry", "357,9 × 245,9 × 16,2"),
+                Pair("Hmotnost", "1370 g"),
+                Pair("Operační systém", "Apple macOS"),
+                Pair("Uhlopříčka displeje", "13.3\""),
+                Pair("Rozlišení displeje", "2560 x 1600 px"),
+                Pair("Model procesor", "Intel Core i5"),
+                Pair("Frekvence procesoru", "1400 MHz"),
+                Pair("Model grafické karty", "Intel Iris Plus Graphics 645")
+        )
+
+        val mbpImages = listOf(
+                Image("/assets/macbookpro16/0.jpg"),
+                Image("/assets/macbookpro16/1.jpg"),
+                Image("/assets/macbookpro16/2.jpg")
+        )
+
+        val mbp13Images = listOf(
+                Image("/assets/macbookpro13/0.jpg")
+        )
+
+        productService.create(
+                Product(
+                        null,
+                        "Macbook pro 16\" 1000 GB",
+                        mbpDescription,
+                        196, 8299000,
+                        mbpImages,
+                        mbpParams + Pair("Kapaciat SSD", "1000 GB")
+                ), category
+        )
+
+        productService.create(
+                Product(
+                        null,
+                        "Macbook pro 16\" 500 GB",
+                        mbpDescription,
+                        245, 8299000,
+                        mbpImages,
+                        mbpParams + Pair("Kapaciat SSD", "500 GB")
+                ), category
+        )
+
+        productService.create(
+                Product(
+                        null,
+                        "Macbook pro 16\" 8 TB",
+                        mbpDescription,
+                        35, 8299000,
+                        mbpImages,
+                        mbpParams + Pair("Kapaciat SSD", "8 TB")
+                ), category
+        )
+
+        productService.create(
+                Product(
+                        null,
+                        "Macbook pro 16\" 4 TB",
+                        mbpDescription,
+                        24, 8299000,
+                        mbpImages,
+                        mbpParams + Pair("Kapaciat SSD", "8 TB")
+                ), category
+        )
+
+        productService.create(
+                Product(
+                        null,
+                        "Macbook pro 13\" 124 GB",
+                        mbp13Description,
+                        43, 3499000,
+                        mbp13Images,
+                        mbp13Params + Pair("Kapaciat SSD", "124 GB")
+                ), category
+        )
+
+        productService.create(
+                Product(
+                        null,
+                        "Macbook pro 13\" 258 GB",
+                        mbp13Description,
+                        12, 4499000,
+                        mbp13Images,
+                        mbp13Params + Pair("Kapaciat SSD", "258 GB")
+                ), category
+        )
+
+        productService.create(
+                Product(
+                        null,
+                        "Macbook pro 13\" 500 GB",
+                        mbp13Description,
+                        3, 6499000,
+                        mbp13Images,
+                        mbp13Params + Pair("Kapaciat SSD", "500 GB")
+                ), category
+        )
+
+        val dellInspironDescription = """
+            Dell Inspiron 15 3000 (3593) je notebook s **pečlivě zvolenými komponenty pro perfektní výkon,** krásným elegantním černým designem a dlouhou výdrží baterie. To vše za dostupnou cenu. Že to není možné? Pojďte se přesvědčit.
+            ###Vychutnejte si čistý obraz
+            ledujte své oblíbené filmy a pořady na veliké 15,6" obrazovce v rozlišení Full HD. Ostré detaily, živé barvy a reálný kontrast.
+            ###Navržen pro život
+            Aby byly notebooky Dell Inspiron 15 (3000) skutečně spolehlivé, prochází důkladným testováním.
+            * vystavení drsným podmínkám a teplotě až 65 °C
+            * 20 000 otevření a zavření víka
+            * 10 milionů úhozů kláves
+            * 40 000 stisknutí multimediálních tlačítek
+            * 25 000 otočení víka
+            * 30 vyjmutí a vložení baterie
+            ###Vysoká výdrž
+            Díky dlouhé životnosti baterie můžete pracovat tak dlouho, jak jen budete potřebovat. Dokonce i bez přístupu k elektrické zásuvce.
+        """.trimIndent()
+
+        val dellInspironParams = mapOf(
+                Pair("Značka", "Dell"),
+                Pair("Velikost operační paměti RAM", "8 GB"),
+                Pair("Hmotnost", "1370 g"),
+                Pair("Operační systém", "Windows 10"),
+                Pair("Uhlopříčka displeje", "15.6\""),
+                Pair("Rozlišení displeje", "2560 x 1600 px"),
+                Pair("Model procesor", "Intel Core i5 1035G1 Ice Lake"),
+                Pair("Frekvence procesoru", "1000 MHz"),
+                Pair("Model grafické karty", "Intel UHD Graphics")
+        )
+
+        val dellInspironImages = listOf(
+                Image("/assets/dell-inspiron/0.jpg"),
+                Image("/assets/dell-inspiron/1.jpg"),
+                Image("/assets/dell-inspiron/2.jpg")
+        )
+
+        productService.create(
+                Product(
+                        null,
+                        "Dell Inspiron 15 (3593) Silver",
+                        dellInspironDescription,
+                        3, 1599000,
+                        dellInspironImages,
+                        dellInspironParams
+                ), category
+        )
+
+        productService.create(
+                Product(
+                        null,
+                        "Dell Inspiron 15 (3593) Black",
+                        dellInspironDescription,
+                        3, 1599000,
+                        dellInspironImages,
+                        dellInspironParams
+                ), category
+        )
     }
 
 }

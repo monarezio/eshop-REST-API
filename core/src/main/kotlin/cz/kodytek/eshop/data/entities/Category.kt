@@ -4,7 +4,7 @@ import org.hibernate.annotations.Type
 import javax.persistence.*
 
 @Entity
-data class Category(
+class Category(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         var id: Long?,
@@ -15,5 +15,5 @@ data class Category(
         var description: String,
         @OneToMany
         @JoinColumn(name = "category_id")
-        var products: MutableList<Product>
+        var products: MutableSet<Product>
 )

@@ -4,7 +4,7 @@ import org.hibernate.annotations.Type
 import javax.persistence.*
 
 @Entity
-data class Product(
+class Product(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         var id: Long?,
@@ -19,8 +19,10 @@ data class Product(
         var price: Int,
         @OneToMany
         @JoinColumn(name = "product_id")
-        var images: List<Image>,
+        var images: MutableSet<Image>,
         @OneToMany
         @JoinColumn(name = "product_id")
-        var parameters: List<ProductParameter>
+        var parameters: MutableSet<ProductParameter>,
+        @ManyToOne(fetch = FetchType.LAZY)
+        var category: Category? = null
 )

@@ -6,6 +6,7 @@
         <non-jta-data-source>java:/MySqlDS</non-jta-data-source>
 
         <class>cz.kodytek.eshop.data.entities.Category</class>
+        <class>cz.kodytek.eshop.data.entities.ProductParameter</class>
         <class>cz.kodytek.eshop.data.entities.Product</class>
         <class>cz.kodytek.eshop.data.entities.Image</class>
         <class>cz.kodytek.eshop.data.entities.Review</class>

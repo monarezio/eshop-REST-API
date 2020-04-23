@@ -1,2 +1,3 @@
-cz\kodytek\eshop\api\rest\resources\CategoryResource.class
-cz\kodytek\eshop\api\rest\JAXRSConfig.class
+cz/kodytek/eshop/servlets/ImageServlet.class
+cz/kodytek/eshop/api/rest/JAXRSConfig.class
+cz/kodytek/eshop/api/rest/resources/CategoryResource.class

@@ -8,6 +8,6 @@ object CategoryMapper : ICategoryMapper {
 
     override fun mapTo(value: DbCategory): Category = Category(value.id!!, value.name, value.description)
 
-    override fun mapFrom(value: Category): DbCategory = DbCategory(null, value.name, value.description, listOf())
+    override fun mapFrom(value: Category): DbCategory = DbCategory(null, value.name, value.description, mutableSetOf())
 
 }
