@@ -28,7 +28,9 @@ public class ImageServlet extends HttpServlet {
         try {
             File f = new File(req
                     .getRequestURI()
-                    .replace("/" + moduleName + "/", ""));
+                    .replace("/" + moduleName + "/assets/", "resources/"));
+
+            System.out.println(f.getPath());
 
             BufferedImage bi = ImageIO.read(f);
             OutputStream os = resp.getOutputStream();

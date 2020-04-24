@@ -3,6 +3,7 @@ package cz.kodytek.logic.beans
 import cz.kodytek.logic.models.Category
 import cz.kodytek.logic.models.Image
 import cz.kodytek.logic.models.Product
+import cz.kodytek.logic.models.ProductRating
 import cz.kodytek.logic.services.interfaces.ICategoryService
 import cz.kodytek.logic.services.interfaces.IProductService
 import java.io.File
@@ -126,7 +127,8 @@ open class StartupBean : Serializable {
                         mbpDescription,
                         196, 8299000,
                         mbpImages,
-                        mbpParams + Pair("Kapaciat SSD", "1000 GB")
+                        mbpParams + Pair("Kapaciat SSD", "1000 GB"),
+                        listOf()
                 ), category
         )
 
@@ -137,7 +139,8 @@ open class StartupBean : Serializable {
                         mbpDescription,
                         245, 8299000,
                         mbpImages,
-                        mbpParams + Pair("Kapaciat SSD", "500 GB")
+                        mbpParams + Pair("Kapaciat SSD", "500 GB"),
+                        listOf()
                 ), category
         )
 
@@ -148,7 +151,26 @@ open class StartupBean : Serializable {
                         mbpDescription,
                         35, 8299000,
                         mbpImages,
-                        mbpParams + Pair("Kapaciat SSD", "8 TB")
+                        mbpParams + Pair("Kapaciat SSD", "8 TB"),
+                        listOf(
+                                ProductRating(
+                                        null,
+                                        "Samuel",
+                                        100,
+                                        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."),
+                                ProductRating(
+                                        null,
+                                        "Tomáš",
+                                        80,
+                                        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."),
+                                ProductRating(
+                                        null,
+                                        "Karel",
+                                        0,
+                                        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."),
+                                ProductRating(null, null, 100, null),
+                                ProductRating(null, null, 5, null)
+                        )
                 ), category
         )
 
@@ -159,7 +181,8 @@ open class StartupBean : Serializable {
                         mbpDescription,
                         24, 8299000,
                         mbpImages,
-                        mbpParams + Pair("Kapaciat SSD", "8 TB")
+                        mbpParams + Pair("Kapaciat SSD", "8 TB"),
+                        listOf()
                 ), category
         )
 
@@ -170,7 +193,8 @@ open class StartupBean : Serializable {
                         mbp13Description,
                         43, 3499000,
                         mbp13Images,
-                        mbp13Params + Pair("Kapaciat SSD", "124 GB")
+                        mbp13Params + Pair("Kapaciat SSD", "124 GB"),
+                        listOf()
                 ), category
         )
 
@@ -181,7 +205,8 @@ open class StartupBean : Serializable {
                         mbp13Description,
                         12, 4499000,
                         mbp13Images,
-                        mbp13Params + Pair("Kapaciat SSD", "258 GB")
+                        mbp13Params + Pair("Kapaciat SSD", "258 GB"),
+                        listOf()
                 ), category
         )
 
@@ -192,7 +217,8 @@ open class StartupBean : Serializable {
                         mbp13Description,
                         3, 6499000,
                         mbp13Images,
-                        mbp13Params + Pair("Kapaciat SSD", "500 GB")
+                        mbp13Params + Pair("Kapaciat SSD", "500 GB"),
+                        listOf()
                 ), category
         )
 
@@ -237,7 +263,8 @@ open class StartupBean : Serializable {
                         dellInspironDescription,
                         3, 1599000,
                         dellInspironImages,
-                        dellInspironParams
+                        dellInspironParams,
+                        listOf()
                 ), category
         )
 
@@ -248,7 +275,174 @@ open class StartupBean : Serializable {
                         dellInspironDescription,
                         3, 1599000,
                         dellInspironImages,
-                        dellInspironParams
+                        dellInspironParams,
+                        listOf()
+                ), category
+        )
+
+        val hpSpectreDescription = """
+            ###Lákavý výkon
+            **Tenký, výkonný a inteligentní**. HP Spectre x360 "13-aw" je **vybavený nejnovějším hardwarem** a baterií s neskutečnou výdrží, která zaručí možnost pracovat celý den. Podsvícená klávesnice zaručí ideální pracovní podmínky ve slabě osvětlených místnostech či během nočních letů.
+            ###Otočný displej
+            Díky inovativní konstrukci otočné o **360°** je možné používat zařízení ve čtyřech režimech. Věnujte se své práci v režimu notebooku, sledujte obrazovku v režimu podstavce, hrajte hry v režimu stojanu a na cestách používejte režim tabletu.
+            ###HP Fast Charge
+            Zapomeňte na omezování a mějte dostatek energie i v těch nejnáročnějších pracovních dnech!
+            S technologií HP Fast Charge nabíjejte své zařízení s vybitou baterií z 0 na 50 % kapacity za cca 30 minut. Praktickou novinkou je **USB-C™ Thunderbolt™** port umístěný na pravém zadním zkoseném rohu, který umožní lepší manipulaci s napájecím kabelem.
+            ###Další funkce
+            | Revoluční, ultra tenký, prakticky bezrámečkový design s perfektním displejem a nádherným vzhledem. | O výjimečný audio projev se postará dvojice reproduktorů vyladěných profesionály z dílny Bang & Olufsen. | Přirozeně pracujte s obsahem, nápady a kresbami s využitím digitálního,pera a rozhraní Windows Ink. Pohotově zapisujte poznámky do aplikací,Office nebo kreslete do řady jiných aplikací. |
+            |:--------------------------------------------------------------------------------------------------:|----------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+        """.trimIndent()
+
+        val hpSpectreParams = mapOf(
+                Pair("Značka", "HP"),
+                Pair("Velikost operační paměti RAM", "16 GB"),
+                Pair("Hmotnost", "1320 g"),
+                Pair("Operační systém", "Windows 10"),
+                Pair("Uhlopříčka displeje", "13.3\""),
+                Pair("Rozlišení displeje", "3840 × 2160 px"),
+                Pair("Model procesor", "Intel Core i7-1065G7"),
+                Pair("Frekvence procesoru", "1300 MHz"),
+                Pair("Model grafické karty", "Intel® Iris Plus (integrovaná bez vlastní paměti) ")
+        )
+
+        val hpSpectreImages = listOf(
+                Image("/assets/hp-spectre/0.jpg"),
+                Image("/assets/hp-spectre/1.jpg"),
+                Image("/assets/hp-spectre/2.jpg"),
+                Image("/assets/hp-spectre/3.jpg"),
+                Image("/assets/hp-spectre/4.jpg")
+        )
+
+        productService.create(
+                Product(
+                        null,
+                        "HP Spectre x360 13-aw0107nc",
+                        hpSpectreDescription,
+                        430,
+                        4959900,
+                        hpSpectreImages,
+                        hpSpectreParams + Pair("Kapacita SSD", "1TB"),
+                        listOf()
+                ), category
+        )
+        
+        productService.create(
+                Product(
+                        null,
+                        "HP Spectre x360 15-df0009nc",
+                        hpSpectreDescription,
+                        430,
+                        5199000,
+                        hpSpectreImages,
+                        hpSpectreParams + Pair("Kapacita SSD", "1TB") + Pair("Grafická karta", "NVIDIA GeForce GTX 1050 Ti/4GB"),
+                        listOf()
+                ), category
+        )
+
+        productService.create(
+                Product(
+                        null,
+                        "HP Spectre x360 13-aw0108nc",
+                        hpSpectreDescription,
+                        430,
+                        5299000,
+                        hpSpectreImages,
+                        hpSpectreParams + Pair("Kapacita SSD", "2TB"),
+                        listOf()
+                ), category
+        )
+
+        val lenovoThinkpasX1Description = """
+            Zařízení ThinkPad bylo na vrcholu hory Everest, v hlubinách oceánu a deštných pralesích. NASA přijala ThinkPad na Mezinárodní vesmírnou stanici a vesmírnou stanici Mir. Je dokonce i ve stálé sbírce v Muzeu moderního umění v NY. Není tedy divu, že jsme prodali více než 100 milionů těchto spolehlivých zařízení – částečně i díky věrným zákazníkům řady X.
+            
+            Zařízení ThinkPad testujeme dle 12 armádních norem a provádíme více než 200 kontrol kvality, které zajišťují funkčnost těchto produktů i v extrémních podmínkách. Díky tomu se můžete spolehnout, že zařízení řady X zvládnou všechny překážky, které vám život postaví do cesty – od arktické divočiny přes pouštní písečné bouře, od stavu bez tíže až po potřísnění tekutinou a pády.
+
+            > Řada ThinkPad se stále rozrůstá a vyvíjí s novými displeji a možnostmi připojení.
+            > -TechAeris, 9. ledna 2018
+            
+            Ať už se jedná o zařízení 2v1, které se přeměňuje na tablet, tablet, který se stane notebookem, zařízení, které se přizpůsobí každému pracovnímu stylu díky pantu otočnému o 360°, je zde výkonný, lehký a snadno přenosný model X, který se hodí pro každého.
+            
+            Prvotřídní zpracování. Účelné provedení. Přeměnitelná zařízení 2v1. Oceněné klávesnice. Skvělé zabezpečení. Vysoký výkon. Vynikající výdrž baterie. Řada X vždy poskytuje prvotřídní zážitek.
+        """.trimIndent()
+        
+        val lenovoX1Params = mapOf(
+                Pair("Značka", "Lenovo"),
+                Pair("Velikost operační paměti RAM", "16 GB"),
+                Pair("Operační systém", "Windows 10"),
+                Pair("Uhlopříčka displeje", "15.6\""),
+                Pair("Rozlišení displeje", "3840 × 2160 px"),
+                Pair("Model procesor", "Intel Core i9"),
+                Pair("Model grafické karty", "Grafika NVIDIA® GeForce® GTX 1650 (MaxQ s 4GB GDDR5)")
+        )
+
+        val lenovoX1Images = listOf(
+                Image("/assets/x1/0.jpg"),
+                Image("/assets/x1/1.JPG"),
+                Image("/assets/x1/2.JPG")
+        )
+
+        productService.create(
+                Product(
+                        null,
+                        "ThinkPad X1 Extreme (2nd Gen) 500GB",
+                        lenovoThinkpasX1Description,
+                        43,
+                        2799900,
+                        lenovoX1Images,
+                        lenovoX1Params + Pair("Velikost SSD", "500GB"),
+                        listOf()
+                ), category
+        )
+
+        productService.create(
+                Product(
+                        null,
+                        "ThinkPad X1 Extreme (2nd Gen) 1TB",
+                        lenovoThinkpasX1Description,
+                        43,
+                        2799900,
+                        lenovoX1Images,
+                        lenovoX1Params + Pair("Velikost SSD", "1000GB"),
+                        listOf()
+                ), category
+        )
+
+        productService.create(
+                Product(
+                        null,
+                        "ThinkPad X1 Extreme (2nd Gen) 2TB",
+                        lenovoThinkpasX1Description,
+                        43,
+                        2799900,
+                        lenovoX1Images,
+                        lenovoX1Params + Pair("Velikost SSD", "2000GB"),
+                        listOf()
+                ), category
+        )
+
+        productService.create(
+                Product(
+                        null,
+                        "ThinkPad X1 Extreme (2nd Gen) 4TB",
+                        lenovoThinkpasX1Description,
+                        43,
+                        2799900,
+                        lenovoX1Images,
+                        lenovoX1Params + Pair("Velikost SSD", "4000GB"),
+                        listOf()
+                ), category
+        )
+
+        productService.create(
+                Product(
+                        null,
+                        "ThinkPad X1 Extreme (2nd Gen) 8TB",
+                        lenovoThinkpasX1Description,
+                        43,
+                        2799900,
+                        lenovoX1Images,
+                        lenovoX1Params + Pair("Velikost SSD", "8000GB"),
+                        listOf()
                 ), category
         )
     }

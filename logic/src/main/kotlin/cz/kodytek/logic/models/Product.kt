@@ -16,5 +16,6 @@ data class Product(
         @get:NotNull
         val price: Int,
         val images: List<Image>,
-        val parameters: Map<String, String>
+        val parameters: Map<String, String>,
+        val ratings: List<ProductRating>
 )

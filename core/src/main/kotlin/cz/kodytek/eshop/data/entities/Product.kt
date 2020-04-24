@@ -24,5 +24,8 @@ class Product(
         @JoinColumn(name = "product_id")
         var parameters: MutableSet<ProductParameter>,
         @ManyToOne(fetch = FetchType.LAZY)
-        var category: Category? = null
+        var category: Category? = null,
+        @OneToMany
+        @JoinColumn(name = "product_id")
+        var ratings: MutableSet<ProductRating> = mutableSetOf()
 )
