@@ -9,15 +9,15 @@ import cz.kodytek.logic.mappers.CategoryMapper
 import cz.kodytek.logic.mappers.ProductMapper
 import cz.kodytek.logic.models.Category
 import cz.kodytek.logic.models.CategoryPage
+import cz.kodytek.logic.models.Order
+import cz.kodytek.logic.models.ProductOrderBy
 import cz.kodytek.logic.services.interfaces.ICategoryService
 import javax.enterprise.context.ApplicationScoped
 import javax.persistence.NoResultException
-import javax.persistence.criteria.Fetch
-import javax.persistence.criteria.Join
-import javax.persistence.criteria.JoinType
-import javax.persistence.criteria.Path
+import javax.persistence.criteria.*
 import cz.kodytek.eshop.data.entities.Category as DbCategory
 import cz.kodytek.eshop.data.entities.Product as DbProduct
+import cz.kodytek.eshop.data.entities.ProductParameter as DbProductParameter
 
 @ApplicationScoped
 open class CategoryService : ICategoryService {
@@ -38,7 +38,7 @@ open class CategoryService : ICategoryService {
         )
     }
 
-    override fun getDetail(id: Long, page: Int): CategoryPage = HibernateSession.createSession { s ->
+    override fun getDetail(id: Long, page: Int, search: String, productOrderBy: ProductOrderBy, order: Order): CategoryPage = HibernateSession.createSession { s ->
         val cb = s.criteriaBuilder
 
         val cq = cb.createQuery(DbCategory::class.java)
@@ -53,16 +53,46 @@ open class CategoryService : ICategoryService {
             val productsRoot = productsQuery.from(DbProduct::class.java)
 
             val join: Join<DbProduct, DbCategory> = productsRoot.join("category", JoinType.LEFT)
+            val joinParams: Join<DbProduct, DbProductParameter> = productsRoot.join("parameters", JoinType.LEFT)
 
             val fetchParameters: Fetch<DbProduct, ProductParameter> = productsRoot.fetch("parameters", JoinType.LEFT)
             val fetchRatings: Fetch<DbProduct, ProductRating> = productsRoot.fetch("ratings", JoinType.LEFT)
             val fetchImages: Fetch<DbProduct, Image> = productsRoot.fetch("images", JoinType.LEFT)
 
             val categoryId: Path<DbCategory> = join.get("id")
-            productsQuery.where(cbp.equal(categoryId, id))
+            val productTitle: Expression<String> = productsRoot.get("title")
+            val productDesc: Expression<String> = productsRoot.get("description")
+            val productParams: Expression<String> = joinParams.get("value")
+            productsQuery.where(
+                    cbp.and(
+                            cbp.equal(categoryId, id),
+                            cbp.or(
+                                    cbp.like(productTitle, "%$search%"),
+                                    cbp.like(productDesc, "%$search%"),
+                                    cbp.like(productParams, "%$search%")
+                            )
+                    )
+            )
 
-            val productIdPath: Path<DbProduct> = productsRoot.get("id")
-            productsQuery.orderBy(cbp.asc(productIdPath))
+            val path: Path<DbProduct> = when (productOrderBy) {
+                ProductOrderBy.id -> {
+                    productsRoot.get("id")
+                }
+                ProductOrderBy.price -> {
+                    productsRoot.get("price")
+                }
+                ProductOrderBy.title -> {
+                    productsRoot.get("title")
+                }
+                else -> {
+                    productsRoot.get("unitsOnStock")
+                }
+            }
+            val orderDirection = when (order) {
+                Order.asc -> cbp.asc(path)
+                else -> cbp.desc(path)
+            }
+            productsQuery.orderBy(orderDirection)
 
             val query = s.createQuery(productsQuery)
             query.maxResults = perPage

@@ -1,5 +1,7 @@
 package cz.kodytek.eshop.api.rest.resources;
 
+import cz.kodytek.logic.models.Order;
+import cz.kodytek.logic.models.ProductOrderBy;
 import cz.kodytek.logic.services.interfaces.ICategoryService;
 
 import javax.inject.Inject;
@@ -22,9 +24,15 @@ public class CategoryResource {
 
     @GET
     @Path("{id}")
-    public Response detail(@PathParam("id") int id, @QueryParam("page") int page, @QueryParam("search") String search) {
+    public Response detail(
+            @PathParam("id") int id,
+            @QueryParam("page") int page,
+            @QueryParam("search") @DefaultValue("") String search,
+            @QueryParam("orderBy") @DefaultValue("id") ProductOrderBy orderBy,
+            @QueryParam("order") @DefaultValue("asc") Order order
+            ) {
         try {
-            return Response.ok(categoryService.getDetail(id, page)).build();
+            return Response.ok(categoryService.getDetail(id, page, search, orderBy, order)).build();
         } catch (NoResultException e) {
             return Response.status(404).build();
         }
