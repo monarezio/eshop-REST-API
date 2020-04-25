@@ -1,4 +1,9 @@
 cz/kodytek/eshop/api/rest/resources/ProductResource.class
+cz/kodytek/eshop/api/rest/resources/DeliveryResource.class
+cz/kodytek/eshop/api/rest/resources/PaymentResource.class
+cz/kodytek/eshop/api/rest/violations/mappers/ValidationExceptionMapper.class
 cz/kodytek/eshop/servlets/ImageServlet.class
+cz/kodytek/eshop/api/rest/violations/models/Violation.class
+cz/kodytek/eshop/api/rest/resources/InvoiceResource.class
 cz/kodytek/eshop/api/rest/JAXRSConfig.class
 cz/kodytek/eshop/api/rest/resources/CategoryResource.class

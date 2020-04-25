@@ -2,6 +2,7 @@ package cz.kodytek.logic.services
 
 import cz.kodytek.eshop.data.connections.HibernateSession
 import cz.kodytek.eshop.data.connections.extensionns.saveAndGet
+import cz.kodytek.eshop.data.entities.Image
 import cz.kodytek.eshop.data.entities.ProductParameter
 import cz.kodytek.eshop.data.entities.ProductRating
 import cz.kodytek.logic.mappers.CategoryMapper
@@ -55,6 +56,7 @@ open class CategoryService : ICategoryService {
 
             val fetchParameters: Fetch<DbProduct, ProductParameter> = productsRoot.fetch("parameters", JoinType.LEFT)
             val fetchRatings: Fetch<DbProduct, ProductRating> = productsRoot.fetch("ratings", JoinType.LEFT)
+            val fetchImages: Fetch<DbProduct, Image> = productsRoot.fetch("images", JoinType.LEFT)
 
             val categoryId: Path<DbCategory> = join.get("id")
             productsQuery.where(cbp.equal(categoryId, id))

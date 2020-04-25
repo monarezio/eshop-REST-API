@@ -4,7 +4,11 @@ import cz.kodytek.logic.models.Category
 import cz.kodytek.logic.models.Image
 import cz.kodytek.logic.models.Product
 import cz.kodytek.logic.models.ProductRating
+import cz.kodytek.logic.models.invoice.DeliveryMethod
+import cz.kodytek.logic.models.invoice.PaymentMethod
 import cz.kodytek.logic.services.interfaces.ICategoryService
+import cz.kodytek.logic.services.interfaces.IDeliveryMethodService
+import cz.kodytek.logic.services.interfaces.IPaymentMethodService
 import cz.kodytek.logic.services.interfaces.IProductService
 import java.io.File
 import java.io.Serializable
@@ -26,9 +30,24 @@ open class StartupBean : Serializable {
     @Inject
     private lateinit var productService: IProductService
 
+    @Inject
+    private lateinit var paymentMethodService: IPaymentMethodService
+
+    @Inject
+    private lateinit var deliveryMethodService: IDeliveryMethodService
+
     @PostConstruct
     open fun seed() {
         println("Seeding...")
+
+        paymentMethodService.create(PaymentMethod(null, "Online kartou"))
+        paymentMethodService.create(PaymentMethod(null, "Hotově/Kartou"))
+        paymentMethodService.create(PaymentMethod(null, "Bankovní převod"))
+
+        deliveryMethodService.create(DeliveryMethod(null, "Česká pošta", 2000))
+        deliveryMethodService.create(DeliveryMethod(null, "DPL", 5000))
+        deliveryMethodService.create(DeliveryMethod(null, "DPP", 9500))
+        deliveryMethodService.create(DeliveryMethod(null, "Dobírka na prodejně", 0))
 
         val notebooks = categoryService.create(Category("Notebooky", """
             **Notebooky** umožňují práci i zábavu odkudkoli a to při zachování dostatečného výkonu. Jestli hledáte způsob, jak se podívat na internet, vyhledat si informace, hrát oblíbené hry, pracovat s různým software nebo prohlížet fotografie a videa, nesmí vám notebook chybět. Ať už přemýšlíte o notebooku do domácnosti, firemním notebooku, nebo si chcete pořídit herní notebook či zařízení 2v1, stále můžete vybírat z desítek a stovek produktů. V našem průvodci nastavení filtrů si notebooky můžete řadit dle výkonu, ceny, výrobce, ale třeba i barvy. Mezi nejznámější výrobce notebooků patří [HP](https://www.hpmarket.cz/), [Acer](https://www.acer.com/), [Asus](https://www.asus.com/), [Dell](http://www1.euro.dell.com/), [Lenovo](https://www.lenovo.com) a [Apple](https://www.apple.com/).
@@ -197,7 +216,7 @@ open class StartupBean : Serializable {
                         listOf()
                 ), category
         )
-
+/* TODO: Change this
         productService.create(
                 Product(
                         null,
@@ -325,7 +344,7 @@ open class StartupBean : Serializable {
                         listOf()
                 ), category
         )
-        
+
         productService.create(
                 Product(
                         null,
@@ -364,7 +383,7 @@ open class StartupBean : Serializable {
             
             Prvotřídní zpracování. Účelné provedení. Přeměnitelná zařízení 2v1. Oceněné klávesnice. Skvělé zabezpečení. Vysoký výkon. Vynikající výdrž baterie. Řada X vždy poskytuje prvotřídní zážitek.
         """.trimIndent()
-        
+
         val lenovoX1Params = mapOf(
                 Pair("Značka", "Lenovo"),
                 Pair("Velikost operační paměti RAM", "16 GB"),
@@ -445,6 +464,8 @@ open class StartupBean : Serializable {
                         listOf()
                 ), category
         )
+
+        */
     }
 
 }

@@ -11,6 +11,13 @@
         <class>cz.kodytek.eshop.data.entities.Product</class>
         <class>cz.kodytek.eshop.data.entities.Image</class>
         <class>cz.kodytek.eshop.data.entities.Review</class>
+        <class>cz.kodytek.eshop.data.entities.InvoiceProduct</class>
+        <class>cz.kodytek.eshop.data.entities.PaymentMethod</class>
+        <class>cz.kodytek.eshop.data.entities.DeliveryMethod</class>
+        <class>cz.kodytek.eshop.data.entities.Person</class>
+        <class>cz.kodytek.eshop.data.entities.Company</class>
+        <class>cz.kodytek.eshop.data.entities.Address</class>
+        <class>cz.kodytek.eshop.data.entities.Invoice</class>
 
         <properties>
             <property name="hibernate.hbm2ddl.auto" value="create-drop"/>

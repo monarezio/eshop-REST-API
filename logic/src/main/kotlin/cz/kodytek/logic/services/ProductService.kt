@@ -70,6 +70,28 @@ open class ProductService : IProductService {
         ProductMapper.mapTo(getRawProduct(s, id))
     }
 
+    override fun getMultiple(ids: List<Long>): List<Product> = HibernateSession.createSession { s ->
+        val cb = s.criteriaBuilder
+
+        val cq = cb.createQuery(DbProduct::class.java)
+        val root = cq.from(DbProduct::class.java)
+
+        val idPath: Path<DbProduct> = root.get("id")
+        cq.where(idPath.`in`(ids))
+
+        val fetchParameters: Fetch<DbProduct, DbProductParameter> = root.fetch("parameters", JoinType.LEFT)
+        val fetchRatings: Fetch<DbProduct, DbProductRating> = root.fetch("ratings", JoinType.LEFT)
+        val fetchImages: Fetch<DbProduct, Image> = root.fetch("images", JoinType.LEFT)
+
+        s.createQuery(cq).resultList.map { ProductMapper.mapTo(it) }
+    }
+
+    override fun removeUnitsFromStock(id: Long, units: Int) = HibernateSession.createSession { s ->
+        val p = s.get(DbProduct::class.java, id)
+        p.unitsOnStock -= units
+        s.update(p)
+    }
+
     override fun rate(productId: Long, rating: ProductRating): ProductRating = HibernateSession.createSession { s ->
         val product = getRawProduct(s, productId)
         val r = s.saveAndGet(DbProductRating(null, rating.fullName, rating.percent, rating.description))

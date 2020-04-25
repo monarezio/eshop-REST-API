@@ -28,4 +28,6 @@ class Product(
         @OneToMany
         @JoinColumn(name = "product_id")
         var ratings: MutableSet<ProductRating> = mutableSetOf()
-)
+) {
+    constructor(id: Long) : this(id, "", "", 0, 0, mutableSetOf(), mutableSetOf())
+}

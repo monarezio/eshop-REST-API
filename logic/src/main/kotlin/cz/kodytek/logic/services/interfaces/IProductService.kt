@@ -10,6 +10,10 @@ interface IProductService {
 
     fun getDetail(id: Long): Product
 
+    fun getMultiple(ids: List<Long>): List<Product>
+
+    fun removeUnitsFromStock(id: Long, units: Int)
+
     fun rate(id: Long, rating: ProductRating): ProductRating
 
 }

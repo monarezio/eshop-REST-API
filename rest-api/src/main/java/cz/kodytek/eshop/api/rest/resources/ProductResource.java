@@ -5,6 +5,7 @@ import cz.kodytek.logic.services.interfaces.IProductService;
 
 import javax.inject.Inject;
 import javax.persistence.NoResultException;
+import javax.validation.Valid;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -28,7 +29,7 @@ public class ProductResource {
 
     @POST
     @Path("{id}/rating")
-    public Response addRating(@PathParam("id") long id, ProductRating rating) {
+    public Response addRating(@PathParam("id") long id, @Valid ProductRating rating) {
         return Response.ok(productService.rate(id, rating)).build();
     }
 
