@@ -96,6 +96,7 @@ open class StartupBean : Serializable {
 
         clearResourceFolder()
         addNotebooks(notebooks)
+        addConsoles(consoles)
     }
 
     private fun clearResourceFolder() {
@@ -235,7 +236,7 @@ open class StartupBean : Serializable {
                         listOf()
                 ), category
         )
-/* TODO: Change this
+
         productService.create(
                 Product(
                         null,
@@ -484,7 +485,300 @@ open class StartupBean : Serializable {
                 ), category
         )
 
-        */
+
+    }
+
+    private fun addConsoles(category: Category) {
+        productService.create(
+                Product(
+                        null,
+                        "Nintendo Switch Black",
+                        """
+                            Mějte po ruce ten nejlepší prostředek herní zábavy, ať jste zrovna kdekoli, a užívejte si ji vždy v té nejlepší kvalitě. Herní konzole Nintendo Switch je navržena tak, abyste ji mohli používat kdekoli a kdykoli chcete. Snadno ji pomocí dokovací stanice připojíte ke své televizi a zahrajete si na velké obrazovce. Když se však chystáte na cesty, konzoli odpojíte a vezmete si ji s sebou. Její snadné ovládání vám zajistí multifukční ovladač, který funguje buď jako klasický joystick, případně se dá připojit k samotné konzoli. Hry si s radostí užijete i se svými přáteli, a to nejen díky chytrému joysticku, ale i zabudovanému Wi-Fi připojení. Vezměte si zábavu vždy tam, kam se zrovna chystáte!
+                            ###Zabavte se doma i na cestách
+                            S Nintendo Switch vás zábava jen tak nepřejde. Zařízení je designováno tak, aby vám nabídlo ty nejlepší multimediální možnosti, ať už jste kdekoli. Díky jeho unikátní konstrukci ho můžete buď připojit k televizi a používat jako domácí herní konzoli, nebo si ho vzít s sebou na cesty v podobě kompaktního přenosného přístroje. 
+                            ###Multifunkční ovladač
+                            Pokud si své hry zrovna užíváte prostřednictvím televize, je tu pro vás klasický dálkový joystick. Jste-li však na cestách, z Joy-Conu snadno odpojíte ovládací prvky a připojíte je ke konzoli – kompaktní, a přesto komfortně ovladatelný přístroj je na světě! 
+                            ###Perfektní možnosti pro každého hráče
+                            Nintendo Switch ve svém vybavení nabízí inovativní herní možnosti, díky kterým si užijete každý aspekt zábavy. Díky multifunkčnímu ovladači snadno proměníte jeden joystick ve dva, se svými přáteli si tak užijete tu nejlepší zábavu tváří v tvář. Kromě toho je součástí vybavení Wi-Fi připojení, díky kterému se spojíte až se sedmi dalšími Nintendo přístroji. 
+                        """.trimIndent(),
+                        94,
+                        849000,
+                        listOf(
+                                Image("/assets/nintendo-switch/0.jpg"),
+                                Image("/assets/nintendo-switch/1.jpg"),
+                                Image("/assets/nintendo-switch/2.jpg"),
+                                Image("/assets/nintendo-switch/3.jpg"),
+                                Image("/assets/nintendo-switch/4.jpg"),
+                                Image("/assets/nintendo-switch/5.jpg"),
+                                Image("/assets/nintendo-switch/6.jpg")
+                        ),
+                        mapOf(
+                                Pair("Značka", "Nintendo"),
+                                Pair("Wifi", "Ano"),
+                                Pair("GPU", " NVIDIA Tegra"),
+                                Pair("CPU", " NVIDIA Tegra"),
+                                Pair("Velkost displeje", "6.2 \""),
+                                Pair("Rozslišení displeje", "1280 x 720")
+                        ),
+                        listOf()
+                ), category
+        )
+
+        productService.create(
+                Product(
+                        null,
+                        "Nintendo Switch Red",
+                        """
+                            Mějte po ruce ten nejlepší prostředek herní zábavy, ať jste zrovna kdekoli, a užívejte si ji vždy v té nejlepší kvalitě. Herní konzole Nintendo Switch je navržena tak, abyste ji mohli používat kdekoli a kdykoli chcete. Snadno ji pomocí dokovací stanice připojíte ke své televizi a zahrajete si na velké obrazovce. Když se však chystáte na cesty, konzoli odpojíte a vezmete si ji s sebou. Její snadné ovládání vám zajistí multifukční ovladač, který funguje buď jako klasický joystick, případně se dá připojit k samotné konzoli. Hry si s radostí užijete i se svými přáteli, a to nejen díky chytrému joysticku, ale i zabudovanému Wi-Fi připojení. Vezměte si zábavu vždy tam, kam se zrovna chystáte!
+                            ###Zabavte se doma i na cestách
+                            S Nintendo Switch vás zábava jen tak nepřejde. Zařízení je designováno tak, aby vám nabídlo ty nejlepší multimediální možnosti, ať už jste kdekoli. Díky jeho unikátní konstrukci ho můžete buď připojit k televizi a používat jako domácí herní konzoli, nebo si ho vzít s sebou na cesty v podobě kompaktního přenosného přístroje. 
+                            ###Multifunkční ovladač
+                            Pokud si své hry zrovna užíváte prostřednictvím televize, je tu pro vás klasický dálkový joystick. Jste-li však na cestách, z Joy-Conu snadno odpojíte ovládací prvky a připojíte je ke konzoli – kompaktní, a přesto komfortně ovladatelný přístroj je na světě! 
+                            ###Perfektní možnosti pro každého hráče
+                            Nintendo Switch ve svém vybavení nabízí inovativní herní možnosti, díky kterým si užijete každý aspekt zábavy. Díky multifunkčnímu ovladači snadno proměníte jeden joystick ve dva, se svými přáteli si tak užijete tu nejlepší zábavu tváří v tvář. Kromě toho je součástí vybavení Wi-Fi připojení, díky kterému se spojíte až se sedmi dalšími Nintendo přístroji. 
+                        """.trimIndent(),
+                        94,
+                        849000,
+                        listOf(
+                                Image("/assets/nintendo-switch/0.jpg"),
+                                Image("/assets/nintendo-switch/1.jpg"),
+                                Image("/assets/nintendo-switch/2.jpg"),
+                                Image("/assets/nintendo-switch/3.jpg"),
+                                Image("/assets/nintendo-switch/4.jpg"),
+                                Image("/assets/nintendo-switch/5.jpg"),
+                                Image("/assets/nintendo-switch/6.jpg")
+                        ),
+                        mapOf(
+                                Pair("Značka", "Nintendo"),
+                                Pair("Wifi", "Ano"),
+                                Pair("GPU", " NVIDIA Tegra"),
+                                Pair("CPU", " NVIDIA Tegra"),
+                                Pair("Velkost displeje", "6.2 \""),
+                                Pair("Rozslišení displeje", "1280 x 720")
+                        ),
+                        listOf()
+                ), category
+        )
+
+        productService.create(
+                Product(
+                        null,
+                        "Nintendo Switch Lite Žlutá",
+                        """
+                            Odlehčená verze Nintenda Switch vychází rovnou ve třech barvách a jedné limitované edici. Kromě toho si k ní můžete pořídit i ochranné prvky, jako je ochranné sklo na displej nebo pouzdro. Můžete si tedy své oblíbené hry hrát i na cestách, aniž byste se obávali poškození konzole, nebo toho, že vám bude v batohu zabírat příliš mnoho místa. Těšit se můžete také na nové hry s oblíbenými Pokémony, novými postavami i spletitým záhadným příběhem. 
+                            ###Lehčí verze oblíbené konzole
+                             Konzole Nintendo Switch Lite je znatelně menší, lehčí a kompaktnější, než její starší bratr Nintendo Switch. Od hlavní verze se liší tím, že si na ní můžete zahrát pouze v Handheld módu, dále konzole nepodporuje výstup na TV, není kompatibilní s dokovací stanicí Nintendo Switch a nedisponuje ovladači Joy-Con. 
+                            ###Tři barvy a limitovaná edice
+                            Vybírat můžete ze tří barevných provedení. Vyrábí se ve žluté, šedé a tyrkysové variantě. Kromě toho je však dostupná i limitovaná edice Nintendo Switch Lite Zacian & Zamazenta, což je šedá konzole s azurovými a purpurovými tlačítky. Na zadní straně navíc najdete obrázky legendárních Pokémonů.  
+                            ###Nové hry s Pokémony
+                            Zároveň s konzolí se spouští hry Pokémon Sword a Pokémon Shield, ve kterých na vás čekají nová dobrodružství v regionu Galar. Budete moci chytat, bojovat i měnit Pokémony. Potkáte tu staré známé, ale i úplně nové postavy. A navíc musíte odhalit tajemství Zacian a Zamazenta, dvou pokémonů, které jistě velmi dobře znáte.  
+                        """.trimIndent(),
+                        94,
+                        549000,
+                        listOf(
+                                Image("/assets/nintendo-switch-lite/0.jpg"),
+                                Image("/assets/nintendo-switch-lite/1.jpg")
+                        ),
+                        mapOf(
+                                Pair("Značka", "Nintendo"),
+                                Pair("Wifi", "Ano"),
+                                Pair("GPU", " NVIDIA Tegra"),
+                                Pair("CPU", " NVIDIA Tegra"),
+                                Pair("Velkost displeje", "5.5 \""),
+                                Pair("Rozslišení displeje", "1280 x 720")
+                        ),
+                        listOf()
+                ), category
+        )
+
+        productService.create(
+                Product(
+                        null,
+                        "Nintendo Switch Lite Limitovaná Edice",
+                        """
+                            Odlehčená verze Nintenda Switch vychází rovnou ve třech barvách a jedné limitované edici. Kromě toho si k ní můžete pořídit i ochranné prvky, jako je ochranné sklo na displej nebo pouzdro. Můžete si tedy své oblíbené hry hrát i na cestách, aniž byste se obávali poškození konzole, nebo toho, že vám bude v batohu zabírat příliš mnoho místa. Těšit se můžete také na nové hry s oblíbenými Pokémony, novými postavami i spletitým záhadným příběhem. 
+                            ###Lehčí verze oblíbené konzole
+                             Konzole Nintendo Switch Lite je znatelně menší, lehčí a kompaktnější, než její starší bratr Nintendo Switch. Od hlavní verze se liší tím, že si na ní můžete zahrát pouze v Handheld módu, dále konzole nepodporuje výstup na TV, není kompatibilní s dokovací stanicí Nintendo Switch a nedisponuje ovladači Joy-Con. 
+                            ###Tři barvy a limitovaná edice
+                            Vybírat můžete ze tří barevných provedení. Vyrábí se ve žluté, šedé a tyrkysové variantě. Kromě toho je však dostupná i limitovaná edice Nintendo Switch Lite Zacian & Zamazenta, což je šedá konzole s azurovými a purpurovými tlačítky. Na zadní straně navíc najdete obrázky legendárních Pokémonů.  
+                            ###Nové hry s Pokémony
+                            Zároveň s konzolí se spouští hry Pokémon Sword a Pokémon Shield, ve kterých na vás čekají nová dobrodružství v regionu Galar. Budete moci chytat, bojovat i měnit Pokémony. Potkáte tu staré známé, ale i úplně nové postavy. A navíc musíte odhalit tajemství Zacian a Zamazenta, dvou pokémonů, které jistě velmi dobře znáte.  
+                        """.trimIndent(),
+                        109,
+                        549000,
+                        listOf(
+                                Image("/assets/nintendo-switch-lite/0.jpg"),
+                                Image("/assets/nintendo-switch-lite/2.jpg")
+                        ),
+                        mapOf(
+                                Pair("Značka", "Nintendo"),
+                                Pair("Wifi", "Ano"),
+                                Pair("GPU", " NVIDIA Tegra"),
+                                Pair("CPU", " NVIDIA Tegra"),
+                                Pair("Velkost displeje", "5.5 \""),
+                                Pair("Rozslišení displeje", "1280 x 720")
+                        ),
+                        listOf()
+                ), category
+        )
+
+        productService.create(
+                Product(
+                        null,
+                        "Nintendo Switch Lite Šedá",
+                        """
+                            Odlehčená verze Nintenda Switch vychází rovnou ve třech barvách a jedné limitované edici. Kromě toho si k ní můžete pořídit i ochranné prvky, jako je ochranné sklo na displej nebo pouzdro. Můžete si tedy své oblíbené hry hrát i na cestách, aniž byste se obávali poškození konzole, nebo toho, že vám bude v batohu zabírat příliš mnoho místa. Těšit se můžete také na nové hry s oblíbenými Pokémony, novými postavami i spletitým záhadným příběhem. 
+                            ###Lehčí verze oblíbené konzole
+                             Konzole Nintendo Switch Lite je znatelně menší, lehčí a kompaktnější, než její starší bratr Nintendo Switch. Od hlavní verze se liší tím, že si na ní můžete zahrát pouze v Handheld módu, dále konzole nepodporuje výstup na TV, není kompatibilní s dokovací stanicí Nintendo Switch a nedisponuje ovladači Joy-Con. 
+                            ###Tři barvy a limitovaná edice
+                            Vybírat můžete ze tří barevných provedení. Vyrábí se ve žluté, šedé a tyrkysové variantě. Kromě toho je však dostupná i limitovaná edice Nintendo Switch Lite Zacian & Zamazenta, což je šedá konzole s azurovými a purpurovými tlačítky. Na zadní straně navíc najdete obrázky legendárních Pokémonů.  
+                            ###Nové hry s Pokémony
+                            Zároveň s konzolí se spouští hry Pokémon Sword a Pokémon Shield, ve kterých na vás čekají nová dobrodružství v regionu Galar. Budete moci chytat, bojovat i měnit Pokémony. Potkáte tu staré známé, ale i úplně nové postavy. A navíc musíte odhalit tajemství Zacian a Zamazenta, dvou pokémonů, které jistě velmi dobře znáte.  
+                        """.trimIndent(),
+                        39,
+                        549000,
+                        listOf(
+                                Image("/assets/nintendo-switch-lite/0.jpg"),
+                                Image("/assets/nintendo-switch-lite/3.jpg")
+                        ),
+                        mapOf(
+                                Pair("Značka", "Nintendo"),
+                                Pair("Wifi", "Ano"),
+                                Pair("GPU", " NVIDIA Tegra"),
+                                Pair("CPU", " NVIDIA Tegra"),
+                                Pair("Velkost displeje", "5.5 \""),
+                                Pair("Rozslišení displeje", "1280 x 720")
+                        ),
+                        listOf()
+                ), category
+        )
+
+        productService.create(
+                Product(
+                        null,
+                        "Nintendo Switch Lite Modrá",
+                        """
+                            Odlehčená verze Nintenda Switch vychází rovnou ve třech barvách a jedné limitované edici. Kromě toho si k ní můžete pořídit i ochranné prvky, jako je ochranné sklo na displej nebo pouzdro. Můžete si tedy své oblíbené hry hrát i na cestách, aniž byste se obávali poškození konzole, nebo toho, že vám bude v batohu zabírat příliš mnoho místa. Těšit se můžete také na nové hry s oblíbenými Pokémony, novými postavami i spletitým záhadným příběhem. 
+                            ###Lehčí verze oblíbené konzole
+                             Konzole Nintendo Switch Lite je znatelně menší, lehčí a kompaktnější, než její starší bratr Nintendo Switch. Od hlavní verze se liší tím, že si na ní můžete zahrát pouze v Handheld módu, dále konzole nepodporuje výstup na TV, není kompatibilní s dokovací stanicí Nintendo Switch a nedisponuje ovladači Joy-Con. 
+                            ###Tři barvy a limitovaná edice
+                            Vybírat můžete ze tří barevných provedení. Vyrábí se ve žluté, šedé a tyrkysové variantě. Kromě toho je však dostupná i limitovaná edice Nintendo Switch Lite Zacian & Zamazenta, což je šedá konzole s azurovými a purpurovými tlačítky. Na zadní straně navíc najdete obrázky legendárních Pokémonů.  
+                            ###Nové hry s Pokémony
+                            Zároveň s konzolí se spouští hry Pokémon Sword a Pokémon Shield, ve kterých na vás čekají nová dobrodružství v regionu Galar. Budete moci chytat, bojovat i měnit Pokémony. Potkáte tu staré známé, ale i úplně nové postavy. A navíc musíte odhalit tajemství Zacian a Zamazenta, dvou pokémonů, které jistě velmi dobře znáte.  
+                        """.trimIndent(),
+                        30,
+                        549000,
+                        listOf(
+                                Image("/assets/nintendo-switch-lite/0.jpg"),
+                                Image("/assets/nintendo-switch-lite/4.jpg")
+                        ),
+                        mapOf(
+                                Pair("Značka", "Nintendo"),
+                                Pair("Wifi", "Ano"),
+                                Pair("GPU", " NVIDIA Tegra"),
+                                Pair("CPU", " NVIDIA Tegra"),
+                                Pair("Velkost displeje", "5.5 \""),
+                                Pair("Rozslišení displeje", "1280 x 720")
+                        ),
+                        listOf()
+                ), category
+        )
+
+        productService.create(
+                Product(
+                        null,
+                        "Sony Playstation 4 Pro 1TB",
+                        """
+                            Potykejte si s nejvýkonnější konzolí na světě a sdílejte své herní světy s ostatními. Model Pro z rodiny PlayStation 4 je k tomu jako stvořený! Zaujme vás nejen svým stylovým designem, ale především technologiemi, které skrývá uvnitř. Ne nadarmo je PS4 Pro snem každého hráče. Nabízí totiž bezkonkurenční výkon, podporu rozlišení 4K, špičkovou grafiku HDR s živými barvami a vylepšený ovladač DualShock 4, který si zamilujete pro jeho pohodlné a přesné ovládání. Vychutnejte si příliv energie, zábavy a relaxace v jednom. Vychutnejte si zážitek, který nemá obdoby.  
+                            ###Stylový design
+                            Futuristické tělo a výrazné křivky – to je provedení, které z této konzole udělá nejen skvělého společníka, ale i designový kousek, který perfektně zapadne do vaší domácnosti. Zastane i funkci Blu-ray přehrávače, který vám možná doteď chyběl, a navíc již v základu podporuje HDR u her i filmů.  
+                            ###Pohlcující herní zážitek
+                            Díky nejnovějším technologiím, které dřímají pod kapotou této konzole, bude hraní her na PS4 Pro neopakovatelným zážitkem. Dosyta si vychutnáte jak dokonale ostrý obraz, tak i perfektní detaily v každém okamžiku.  
+                            ###Zábava, která nekončí
+                            Nejlepší filmy, seriály a nejnovější videa budete moci streamovat ze služeb Netflix, YouTube i z řady dalších aplikací, a to až v dechberoucím rozlišení 4K! To vše díky automatickému převzorkování, které vám dopřeje ten nejrealističtější obraz.   
+                        """.trimIndent(),
+                        94,
+                        896900,
+                        listOf(
+                                Image("/assets/playstation/0.jpg"),
+                                Image("/assets/playstation/1.jpg")
+                        ),
+                        mapOf(
+                                Pair("Značka", "Sony"),
+                                Pair("Wifi", "Ano"),
+                                Pair("GPU", "AMD Radeon"),
+                                Pair("CPU", "AMD Jaguar"),
+                                Pair("Velikost disku", "1TB")
+                        ),
+                        listOf()
+                ), category
+        )
+
+        productService.create(
+                Product(
+                        null,
+                        "Sony Playstation 4 Pro 500GB",
+                        """
+                            Potykejte si s nejvýkonnější konzolí na světě a sdílejte své herní světy s ostatními. Model Pro z rodiny PlayStation 4 je k tomu jako stvořený! Zaujme vás nejen svým stylovým designem, ale především technologiemi, které skrývá uvnitř. Ne nadarmo je PS4 Pro snem každého hráče. Nabízí totiž bezkonkurenční výkon, podporu rozlišení 4K, špičkovou grafiku HDR s živými barvami a vylepšený ovladač DualShock 4, který si zamilujete pro jeho pohodlné a přesné ovládání. Vychutnejte si příliv energie, zábavy a relaxace v jednom. Vychutnejte si zážitek, který nemá obdoby.  
+                            ###Stylový design
+                            Futuristické tělo a výrazné křivky – to je provedení, které z této konzole udělá nejen skvělého společníka, ale i designový kousek, který perfektně zapadne do vaší domácnosti. Zastane i funkci Blu-ray přehrávače, který vám možná doteď chyběl, a navíc již v základu podporuje HDR u her i filmů.  
+                            ###Pohlcující herní zážitek
+                            Díky nejnovějším technologiím, které dřímají pod kapotou této konzole, bude hraní her na PS4 Pro neopakovatelným zážitkem. Dosyta si vychutnáte jak dokonale ostrý obraz, tak i perfektní detaily v každém okamžiku.  
+                            ###Zábava, která nekončí
+                            Nejlepší filmy, seriály a nejnovější videa budete moci streamovat ze služeb Netflix, YouTube i z řady dalších aplikací, a to až v dechberoucím rozlišení 4K! To vše díky automatickému převzorkování, které vám dopřeje ten nejrealističtější obraz.   
+                        """.trimIndent(),
+                        94,
+                        846900,
+                        listOf(
+                                Image("/assets/playstation/0.jpg"),
+                                Image("/assets/playstation/1.jpg")
+                        ),
+                        mapOf(
+                                Pair("Značka", "Sony"),
+                                Pair("Wifi", "Ano"),
+                                Pair("GPU", "AMD Radeon"),
+                                Pair("CPU", "AMD Jaguar"),
+                                Pair("Velikost disku", "500GB")
+                        ),
+                        listOf()
+                ), category
+        )
+
+        productService.create(
+                Product(
+                        null,
+                        "Microsoft Xbox One 500GB",
+                        """
+                            S konzolí Xbox One okusíte zábavu, kterou nikde jinde nenajdete. Nabízí nejpokročilejší režim hry ve více hráčích a ty nejexkluzivnější hry vůbec. Díky funkci Smart Match najdete přesně takové vyzyvatele, kteří budou maximálně odpovídat vašemu hernímu stylu a dovednostem. Tento jedinečný kousek vám umožní také rychlé přepínání mezi zábavnými aplikacemi a hravě díky němu zvládnete i více činností najednou – umožní vám vedle sebe připnout film, hru i živé televizní vysílání.   
+                            ###Jedinečná konzole
+                            Rozbalte krabici a nechte se okouzlit konzolí Xbox One, která skvěle odpovídá nárokům dnešní hektické doby. Aktualizace i stahování probíhají na pozadí, takže vás nebude nic omezovat. Potřebujete stopnout rozehranou hru? Pro Xbox One to není problém. Pozastavte ji a potom pokračujte přesně tam, kde jste skončili.   
+                            ###Bezdrátový ovladač
+                            Xbox One se vám zavděčí také svým prvotřídním herním ovladačem, který prošel řadou inovací. Díky funkci Impulse Trigger, citlivým páčkám a směrovému ovladači okusíte ještě preciznější odezvu pro realističtější zážitek ze hry.   
+                            ###Bezva poslech
+                            Součástí balení jsou také pohodlná chatovací sluchátka, která se postarají o bezkonkurenčně čistý digitální zvuk. Přátele i protivníky tak budete moci poslouchat v té nejlepší kvalitě. Nastavení hlasitosti si navíc můžete snadno upravovat, aniž byste museli dát z rukou ovladač.    
+                        """.trimIndent(),
+                        52,
+                        942000,
+                        listOf(
+                                Image("/assets/xbox/0.jpg"),
+                                Image("/assets/xbox/1.jpg"),
+                                Image("/assets/xbox/2.jpg"),
+                                Image("/assets/xbox/3.jpg"),
+                                Image("/assets/xbox/4.jpg"),
+                                Image("/assets/xbox/5.jpg"),
+                                Image("/assets/xbox/6.jpg")
+                        ),
+                        mapOf(
+                                Pair("Značka", "Microsoft"),
+                                Pair("Wifi", "Ano"),
+                                Pair("GPU", "AMD Radeon GCN"),
+                                Pair("CPU", "AMD Jaguar"),
+                                Pair("Velikost disku", "500GB")
+                        ),
+                        listOf()
+                ), category
+        )
     }
 
 }

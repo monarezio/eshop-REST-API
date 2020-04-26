@@ -103,7 +103,7 @@ open class CategoryService : ICategoryService {
         }
 
         val c = s.createQuery(cq).singleResult
-        val cCount = count(id).toInt()
+        val cCount = count(id, search).toInt()
 
         CategoryPage(
                 CategoryMapper.mapTo(c),
@@ -112,18 +112,31 @@ open class CategoryService : ICategoryService {
         )
     }
 
-    private fun count(categoryId: Long): Long = HibernateSession.createSession { s ->
+    private fun count(categoryId: Long, search: String): Long = HibernateSession.createSession { s ->
         val cb = s.criteriaBuilder
 
         val cq = cb.createQuery(Long::class.java)
-        val root = cq.from(DbCategory::class.java)
+        val root = cq.from(DbProduct::class.java)
 
-        val join: Join<DbCategory, DbProduct> = root.join("products", JoinType.LEFT)
+        val join: Join<DbProduct, DbCategory> = root.join("category", JoinType.LEFT)
+        val joinParams: Join<DbProduct, ProductParameter> = root.join("parameters", JoinType.LEFT)
 
-        val idPath: Path<DbCategory> = root.get("id")
-        cq.where(cb.equal(idPath, categoryId))
+        val pathId: Path<DbCategory> = join.get("id")
+        val productTitle: Expression<String> = root.get("title")
+        val productDesc: Expression<String> = root.get("description")
+        val productParams: Expression<String> = joinParams.get("value")
+        cq.where(
+                cb.and(
+                        cb.equal(pathId, categoryId),
+                        cb.or(
+                                cb.like(productTitle, "%$search%"),
+                                cb.like(productDesc, "%$search%"),
+                                cb.like(productParams, "%$search%")
+                        )
+                )
+        )
 
-        s.createQuery(cq.select(cb.count(root))).singleResult
+        s.createQuery(cq.select(cb.countDistinct(root))).singleResult
     }
 
 }
