@@ -10,7 +10,7 @@ import javax.persistence.NoResultException
 import cz.kodytek.eshop.data.entities.DeliveryMethod as DbDeliveryMethod
 
 @ApplicationScoped
-class DeliveryMethodService : IDeliveryMethodService {
+open class DeliveryMethodService : IDeliveryMethodService {
 
     override fun create(deliveryMethod: DeliveryMethod): DeliveryMethod = HibernateSession.createSession { s ->
         DeliveryMapper.mapTo(s.saveAndGet(DeliveryMapper.mapFrom(deliveryMethod)))

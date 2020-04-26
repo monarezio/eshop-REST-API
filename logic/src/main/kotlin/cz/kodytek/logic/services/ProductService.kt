@@ -36,8 +36,6 @@ open class ProductService : IProductService {
             val miniaturePath = "assets/products/${uuid}_min.jpg"
             val path = "assets/products/$uuid.jpg"
 
-            println("Image path: " + image.path)
-
             val originalImage = ImageIO.read(
                     classLoader.getResourceAsStream(image.path)
             )

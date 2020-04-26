@@ -6,10 +6,8 @@ import cz.kodytek.logic.models.Product
 import cz.kodytek.logic.models.ProductRating
 import cz.kodytek.logic.models.invoice.DeliveryMethod
 import cz.kodytek.logic.models.invoice.PaymentMethod
-import cz.kodytek.logic.services.interfaces.ICategoryService
-import cz.kodytek.logic.services.interfaces.IDeliveryMethodService
-import cz.kodytek.logic.services.interfaces.IPaymentMethodService
-import cz.kodytek.logic.services.interfaces.IProductService
+import cz.kodytek.logic.reader.CSVReader
+import cz.kodytek.logic.services.interfaces.*
 import java.io.File
 import java.io.Serializable
 import javax.annotation.PostConstruct
@@ -36,8 +34,29 @@ open class StartupBean : Serializable {
     @Inject
     private lateinit var deliveryMethodService: IDeliveryMethodService
 
+    @Inject
+    private lateinit var apiAccessKeyService: IApiAccessKeyService
+
+    @Inject
+    private lateinit var csvReader: CSVReader
+
+    @Inject
+    private lateinit var mailService: IMailService
+
     @PostConstruct
     open fun seed() {
+        println("Creating api keys...")
+        csvReader.read("/api-keys.csv") { line ->
+            val accessKey = apiAccessKeyService.create(line.replace("\"", ""))
+            mailService.sendPlainText("Samuel Kodytek", "samuel.kodytek@gmail.com", accessKey.email, "--- API KEY ---", """
+                Hello, your access api key to the eshop web service is:
+                
+                ${accessKey.key}
+                
+                Please save it.
+            """.trimIndent())
+        }
+
         println("Seeding...")
 
         paymentMethodService.create(PaymentMethod(null, "Online kartou"))

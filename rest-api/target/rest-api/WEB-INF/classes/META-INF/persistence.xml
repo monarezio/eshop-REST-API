@@ -18,6 +18,8 @@
         <class>cz.kodytek.eshop.data.entities.Company</class>
         <class>cz.kodytek.eshop.data.entities.Address</class>
         <class>cz.kodytek.eshop.data.entities.Invoice</class>
+        <class>cz.kodytek.eshop.data.entities.ApiAccessKey</class>
+        <class>cz.kodytek.eshop.data.entities.Log</class>
 
         <properties>
             <property name="hibernate.hbm2ddl.auto" value="create-drop"/>

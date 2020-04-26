@@ -26,7 +26,7 @@ import cz.kodytek.eshop.data.entities.InvoiceProduct as DbInvoiceProduct
 import cz.kodytek.eshop.data.entities.Invoice as DbInvoice
 
 @ApplicationScoped
-class InvoiceService : IInvoiceService {
+open class InvoiceService : IInvoiceService {
 
     @Inject
     private lateinit var paymentMethodService: IPaymentMethodService

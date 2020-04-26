@@ -1,7 +1,13 @@
 <!DOCTYPE web-app PUBLIC
- "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
+        "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+        "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-  <display-name>Rest API</display-name>
+    <display-name>Rest API</display-name>
+
+    <servlet>
+        <servlet-name>SwaggerBootstrap</servlet-name>
+        <servlet-class>cz.kodytek.eshop.servlets.SwaggerServlet</servlet-class>
+        <load-on-startup>2</load-on-startup>
+    </servlet>
 </web-app>

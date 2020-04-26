@@ -11,7 +11,7 @@ import javax.persistence.NoResultException
 import cz.kodytek.eshop.data.entities.PaymentMethod as DbPaymentMethod
 
 @ApplicationScoped
-class PaymentMethodService : IPaymentMethodService {
+open class PaymentMethodService : IPaymentMethodService {
 
     override fun create(paymentMethod: PaymentMethod): PaymentMethod = HibernateSession.createSession { s ->
         PaymentMapper.mapTo(s.saveAndGet(PaymentMapper.mapFrom(paymentMethod)))
